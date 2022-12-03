@@ -1,5 +1,7 @@
 (lang dune 3.4)
 
+(using menhir 2.1)
+
 (name aoc2022)
 
 (generate_opam_files true)

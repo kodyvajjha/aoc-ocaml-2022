@@ -2,3 +2,9 @@
  (public_name dayone)
  (name dayone)
  (libraries containers))
+
+(menhir
+ (modules inputgram)
+ (flags --strict))
+
+(ocamllex inputlex)
