@@ -1,7 +1,7 @@
 (executable
  (public_name dayone)
  (name dayone)
- (libraries containers))
+ (libraries containers str))
 
 (menhir
  (modules inputgram)

@@ -21,7 +21,7 @@ let list_max (l : int list) = CCList.fold_left max (List.hd l) l
 let () =
   let sums = List.map sum preprocess in
   let max = list_max sums in
-  print_endline (string_of_int max)
+  CCFormat.printf "Day one, part one : %d" max
 
 (* Part 2.*)
 
@@ -30,4 +30,4 @@ let () =
   let sorted = CCList.sort compare sums in
   let rev = List.rev sorted in
   let first, second, third = List.nth rev 0, List.nth rev 1, List.nth rev 2 in
-  print_int (first + second + third)
+  CCFormat.printf "@.Day one, part two : %d" (first + second + third)
