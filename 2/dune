@@ -1,0 +1,11 @@
+(executable
+ (public_name daytwo)
+ (name daytwo)
+ (preprocess (pps ppx_deriving.show))
+ (libraries containers)
+ (flags (:standard -w -66)))
+
+(menhir
+ (modules inputgram))
+
+(ocamllex inputlex)
