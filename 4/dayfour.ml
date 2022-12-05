@@ -34,3 +34,32 @@ let () =
   let rounds = Inputgram.inputfile Inputlex.token lexbuf in
   let indicators = List.map indicator rounds in
   print_int @@ CCList.fold_left ( + ) 0 indicators
+
+(* Part 2 *)
+let overlaps a b c d = (a <= d && b >= c) || (c <= b && d >= a)
+
+let () =
+  assert (overlaps 2 4 6 8 = false);
+  assert (overlaps 2 3 4 5 = false);
+  assert (overlaps 5 7 7 9 = true);
+  assert (overlaps 2 8 3 7 = true);
+  assert (overlaps 6 6 4 6 = true);
+  assert (overlaps 2 6 4 8 = true)
+
+let () =
+  let ic = open_in "4/input.txt" in
+  let lexbuf = Lexing.from_channel ic in
+  let rounds = Inputgram.inputfile Inputlex.token lexbuf in
+  let indicators =
+    List.map
+      (fun x ->
+        match x with
+        | [ a; b; c; d ] ->
+          if overlaps a b c d then
+            1
+          else
+            0
+        | _ -> failwith "unexpected!")
+      rounds
+  in
+  print_int @@ CCList.fold_left ( + ) 0 indicators
