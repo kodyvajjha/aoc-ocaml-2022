@@ -6,6 +6,6 @@
  (flags (:standard -w -66)))
 
 (menhir
- (modules inputgram))
+ (modules inputgram inputgramtwo))
 
-(ocamllex inputlex)
+(ocamllex inputlex inputlextwo)

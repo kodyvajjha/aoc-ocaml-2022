@@ -10,6 +10,11 @@ type player_move =
   | PScissors
 [@@deriving show]
 
+type ends_as =
+  | Lose
+  | Draw
+  | Win
+
 let shape_score = function
   | PRock -> 1 (* Rock *)
   | PPaper -> 2 (* Paper *)
@@ -26,3 +31,15 @@ let outcome_score (omv : opponent_move * player_move) =
   | OPaper, PScissors -> 6
   | ORock, PPaper -> 6
   | OScissors, PRock -> 6
+
+let choose_outcome (opends : opponent_move * ends_as) =
+  match opends with
+  | ORock, Lose -> PScissors
+  | ORock, Win -> PPaper
+  | ORock, Draw -> PRock
+  | OPaper, Lose -> PRock
+  | OPaper, Win -> PScissors
+  | OPaper, Draw -> PPaper
+  | OScissors, Lose -> PPaper
+  | OScissors, Win -> PRock
+  | OScissors, Draw -> PScissors
