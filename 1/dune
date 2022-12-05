@@ -3,8 +3,8 @@
  (name dayone)
  (libraries containers str))
 
-(menhir
- (modules inputgram)
- (flags --strict))
+; (menhir
+;  (modules inputgram)
+;  (flags --strict))
 
-(ocamllex inputlex)
+; (ocamllex inputlex)
