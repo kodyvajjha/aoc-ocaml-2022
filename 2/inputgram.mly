@@ -32,9 +32,9 @@ opponentmove:
 | OPPSCISSTOK { Syntax.OScissors }
 
 ourmove:
-| PLAROCKTOK { (Syntax.PRock) }
-| PLAPAPERTOK { (Syntax.PPaper)}
-| PLASCISSTOK { (Syntax.PScissors)}
+| PLAROCKTOK { Syntax.PRock }
+| PLAPAPERTOK { Syntax.PPaper }
+| PLASCISSTOK { Syntax.PScissors }
 
 
 eof:
