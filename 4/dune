@@ -1,0 +1,10 @@
+(executable
+ (public_name dayfour)
+ (name dayfour)
+ (libraries containers str)
+ (flags (:standard -w -66)))
+
+(menhir
+ (modules inputgram))
+
+(ocamllex inputlex)
