@@ -1,0 +1,5 @@
+(executable
+ (public_name dayfive)
+ (name dayfive)
+ (libraries containers str)
+ (flags (:standard -w -66)))
