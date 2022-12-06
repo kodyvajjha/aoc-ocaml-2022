@@ -54,6 +54,17 @@ let move crates l =
     crates.(second - 1) <- l2
   | _ -> failwith "failed!!!!"
 
+let move_two crates l =
+  match l with
+  | [ qty; first; second ] ->
+    let l1, l2 =
+      ( CCList.drop qty crates.(first - 1),
+        CCList.take qty crates.(first - 1) @ crates.(second - 1) )
+    in
+    crates.(first - 1) <- l1;
+    crates.(second - 1) <- l2
+  | _ -> failwith "failed!!!!"
+
 (* Part 1. *)
 let () =
   List.iter (move init) lines;
@@ -68,3 +79,8 @@ let () =
   ["D"; "P"; "Q"; "D"; "J"; "H"; "N"; "T"; "L"; "W"; "Z"; "L"; "H"; "P"; "R"];
   ["H"]|]
   *)
+
+(* Part two. *)
+let () =
+  List.iter (move_two init) lines;
+  CCFormat.printf "%a" CCFormat.(array (list string)) init
