@@ -17,19 +17,29 @@ let rec all_diff_chars str =
 
 let is_marker str = str |> first_four |> explode |> all_diff_chars
 
-let windows l =
+let windows size l =
   let final = ref [] in
-  for i = 0 to List.length l - 4 do
+  for i = 0 to List.length l - size do
     let res = ref [] in
-    res := !res @ [ List.nth l i ];
-    res := !res @ [ List.nth l (i + 1) ];
-    res := !res @ [ List.nth l (i + 2) ];
-    res := !res @ [ List.nth l (i + 3) ];
+    for j = 0 to size - 1 do
+      res := !res @ [ List.nth l (i + j) ]
+    done;
     final := !final @ [ !res ]
   done;
-  List.combine CCList.(4 -- List.length l) !final
+  List.combine CCList.(size -- List.length l) !final
 
 (* Part 1 *)
+(* let () =
+   match line with
+   | Some line ->
+     let line = explode line in
+     print_int @@ fst @@ List.hd
+     @@ List.filter
+          (fun x -> snd x = true)
+          (List.map (fun y -> fst y, all_diff_chars (snd y)) (windows 4 line))
+   | None -> failwith "failed" *)
+
+(* Part 2 *)
 let () =
   match line with
   | Some line ->
@@ -37,5 +47,5 @@ let () =
     print_int @@ fst @@ List.hd
     @@ List.filter
          (fun x -> snd x = true)
-         (List.map (fun y -> fst y, all_diff_chars (snd y)) (windows line))
+         (List.map (fun y -> fst y, all_diff_chars (snd y)) (windows 14 line))
   | None -> failwith "failed"
