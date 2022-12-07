@@ -2,8 +2,6 @@
 
 let line = CCIO.(with_in "6/input.txt" read_line)
 
-let first_four str = CCString.take 4 str
-
 let explode s = List.init (String.length s) (String.get s)
 
 let rec all_diff_chars str =
@@ -14,8 +12,6 @@ let rec all_diff_chars str =
       false
     else
       all_diff_chars xs
-
-let is_marker str = str |> first_four |> explode |> all_diff_chars
 
 let windows size l =
   let final = ref [] in
