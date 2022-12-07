@@ -29,21 +29,22 @@ let windows size l =
   List.combine CCList.(size -- List.length l) !final
 
 (* Part 1 *)
-(* let () =
-   match line with
-   | Some line ->
-     let line = explode line in
-     print_int @@ fst @@ List.hd
-     @@ List.filter
-          (fun x -> snd x = true)
-          (List.map (fun y -> fst y, all_diff_chars (snd y)) (windows 4 line))
-   | None -> failwith "failed" *)
+let () =
+  match line with
+  | Some line ->
+    let line = explode line in
+    print_int @@ fst @@ List.hd
+    @@ List.filter
+         (fun x -> snd x = true)
+         (List.map (fun y -> fst y, all_diff_chars (snd y)) (windows 4 line))
+  | None -> failwith "failed"
 
 (* Part 2 *)
 let () =
   match line with
   | Some line ->
     let line = explode line in
+    print_string "\n";
     print_int @@ fst @@ List.hd
     @@ List.filter
          (fun x -> snd x = true)
